@@ -60,9 +60,9 @@ export function LandingPage() {
 
             {/* 统计栏 */}
             <div className="max-w-[800px] mx-auto flex justify-between items-center py-4">
-              <div className="text-sm font-medium">以用户为中心的解决方案</div>
-              <div className="text-sm font-medium">直观的界面设计</div>
-              <div className="text-sm font-medium">平衡美学与功能性</div>
+              <div className="text-xs sm:text-sm font-medium">以用户为中心的解决方案</div>
+              <div className="text-xs sm:text-sm font-medium">直观的界面设计</div>
+              <div className="text-xs sm:text-sm font-medium">平衡美学与功能性</div>
             </div>
 
             {/* 数据洞察部分 */}
