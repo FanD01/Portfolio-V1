@@ -59,8 +59,6 @@ export function LandingPage() {
                 style={{ background: '#f3f4f6' }}
                 onError={(error) => console.error(error)}
                 onPointerMove={(e) => {
-                  const x = (e.clientX / window.innerWidth) * 2 - 1;
-                  const y = -(e.clientY / window.innerHeight) * 2 + 1;
                   if (e.target instanceof HTMLElement) {
                     e.target.style.cursor = 'grab';
                   }

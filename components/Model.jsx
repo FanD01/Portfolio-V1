@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRef, useEffect, useState } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -6,7 +7,6 @@ import * as THREE from 'three'
 
 export default function Model() {
   const ref = useRef()
-  const { scene } = useThree()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   
   // 在组件挂载时加载模型
