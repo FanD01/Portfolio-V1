@@ -1,10 +1,13 @@
 'use client'
 
+import { Canvas } from '@react-three/fiber'
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ChevronRight, Mail, Phone } from 'lucide-react'
+import { Suspense } from 'react'
+import Model from '@/components/Model'
 
 export function LandingPage() {
   return (
@@ -47,15 +50,33 @@ export function LandingPage() {
             </div>
 
             {/* 占位区域 */}
-            <div className="w-full aspect-[16/9] rounded-lg overflow-hidden">
-              <Image
-                src="/hero-image.png"
-                alt="主页图片"
-                width={1920}
-                height={1080}
-                className="w-full h-full object-cover"
-                priority
-              />
+            <div className="w-full aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
+              <Canvas
+                camera={{
+                  position: [0, 0, 5],
+                  fov: 75
+                }}
+                style={{ background: '#f3f4f6' }}
+                onError={(error) => console.error(error)}
+                onPointerMove={(e) => {
+                  const x = (e.clientX / window.innerWidth) * 2 - 1;
+                  const y = -(e.clientY / window.innerHeight) * 2 + 1;
+                  if (e.target instanceof HTMLElement) {
+                    e.target.style.cursor = 'grab';
+                  }
+                }}
+              >
+                <Suspense fallback={
+                  <div className="w-full h-full flex items-center justify-center">
+                    <p className="text-gray-500">加载中...</p>
+                  </div>
+                }>
+                  <Model />
+                </Suspense>
+                <ambientLight intensity={1} />
+                <directionalLight position={[5, 5, 5]} intensity={2} />
+                <pointLight position={[-5, -5, -5]} intensity={1} />
+              </Canvas>
             </div>
 
             {/* 统计栏 */}
